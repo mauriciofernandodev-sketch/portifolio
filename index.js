@@ -1,8 +1,10 @@
 
 
     // Atualiza o ano automaticamente.
-    const yearElement = document.querySelector("#year");
-    yearElement.textContent = new Date().getFullYear();
+    const yearElement = document.querySelector("#footer-year");
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
+    }
 
     // Registra os cliques no WhatsApp para testes locais.
     const whatsappLink = document.querySelector('a[href^="https://wa.me/"]');
@@ -72,4 +74,3 @@ if (spiral && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 
   updateSpiral();
 }
-
