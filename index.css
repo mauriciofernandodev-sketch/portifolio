@@ -1,4 +1,3 @@
-
 :root {
       --background: #faf9f6;
       --surface: #ffffff;
@@ -443,7 +442,7 @@
     }
 
     #rage p {
-      color: #ddd;
+      color: #ff0000;
     }
     #rage .project-link {
       color: #ff6b6b;
@@ -1339,7 +1338,7 @@ section,
 
 #rage {
   isolation: isolate;
-  min-height: 330px;
+  min-height: 370px;
   background-color: #17191c;
   background-image: none;
   overflow: hidden;
@@ -1347,27 +1346,53 @@ section,
 
 #rage::after {
   position: absolute;
-  inset: 0 0 0 45%;
-  z-index: -1;
+  inset: 0;
+  z-index: 0;
   content: "";
-  background: linear-gradient(90deg, #17191c 0%, rgba(23, 25, 28, 0.45) 35%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    #17191c 0%,
+    #17191c 34%,
+    rgba(23, 25, 28, 0.92) 48%,
+    rgba(23, 25, 28, 0.35) 68%,
+    transparent 86%
+  );
 }
 
 #rage .project-image {
   position: absolute;
-  right: -15px;
-  bottom: -50px;
-  z-index: -2;
-  width: 58%;
-  height: calc(100% + 50px);
-  object-fit: cover;
-  object-position: center top;
+  right: 0;
+  bottom: -1px;
+  z-index: -1;
+  width: 62%;
+  max-width: none;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
   opacity: 0.9;
   mix-blend-mode: screen;
 }
 
+#rage > :not(.project-image) {
+  position: relative;
+  z-index: 1;
+  max-width: 55%;
+}
+
+#rage .project-number {
+  margin-top: 8px;
+}
+
 #rage p {
-  color: var(--muted);
+  color:  rgb(163, 0, 0);
+}
+
+#rage h3 {
+  color:  rgb(151, 2, 2);
+}
+
+#rage .project-number {
+  color: rgb(255, 0, 0);
 }
 
 .tag-tintas,
@@ -1375,6 +1400,66 @@ section,
   background: transparent;
   border: 1px solid var(--border);
   color: var(--muted);
+}
+
+#rage .tags {
+  gap: 8px;
+  margin-top: 20px;
+}
+
+#rage .tag-rage {
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 54, 54, 0.55);
+  border-radius: 999px;
+  background: rgba(255, 54, 54, 0.08);
+  color: #ffb0b0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+#rage .tag-rage:hover {
+  background: rgba(255, 54, 54, 0.2);
+  border-color: #ff5555;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+#rage .project-link {
+  color: #ff0000;
+}
+
+#tintas .tags {
+  gap: 8px;
+  margin-top: 20px;
+}
+
+#tintas .tag-tintas {
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition:
+    filter 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+#tintas .tag-tintas:hover {
+  filter: brightness(1.15);
+  border-color: #ffffff;
+  transform: translateY(-2px);
 }
 
 .services {
@@ -1439,25 +1524,55 @@ section,
   }
 
   #rage {
-    min-height: 420px;
-    padding-bottom: 280px;
+    min-height: 370px;
+    padding-bottom: 190px;
   }
 
   #rage .project-image {
-    right: -10%;
-    width: 115%;
-    height: 260px;
-    object-position: center top;
+    right: -8%;
+    width: 78%;
+    height: 100%;
+    object-position: center bottom;
   }
 
   #rage::after {
-    inset: auto 0 0;
-    height: 280px;
-    background: linear-gradient(0deg, #17191c 0%, rgba(23, 25, 28, 0.3) 70%, transparent 100%);
+    background: linear-gradient(
+      90deg,
+      #17191c 0%,
+      rgba(23, 25, 28, 0.95) 45%,
+      rgba(23, 25, 28, 0.45) 72%,
+      transparent 100%
+    );
+  }
+
+  #rage > :not(.project-image) {
+    max-width: 68%;
   }
 
   .ft-inner {
     gap: 40px;
+  }
+
+  /* Navegação fixa: mantém a marca e os links organizados na mesma barra. */
+  header nav {
+    flex-wrap: nowrap;
+  }
+
+  header .nav-links {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-width: 0;
+    gap: clamp(12px, 2.2vw, 30px);
+  }
+
+  header .nav-links a {
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) and (min-width: 761px) {
+    header .nav-contact {
+      display: none;
+    }
   }
 }
 
